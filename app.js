@@ -21,7 +21,7 @@ var io = require('socket.io').listen(app);
 // Send current time to all connected clients
 function sendTime() {
 	
-	client.get("http://localhost:999", function (data, response) {
+	client.get("http://localhost:31031/rssfeed?cat=void", function (data, response) {
 		io.emit('refresh', data);
 	});
 }
@@ -33,7 +33,7 @@ setInterval(sendTime, 1000000000000000);
 io.on('connection', function(socket) {
     // Use socket to communicate with this particular client only, sending it it's own id
     
-	client.get("http://localhost:999", function (data, response) {
+	client.get("http://localhost:31031/rssfeed?cat=void", function (data, response) {
 		socket.emit('refresh', data);
 	});
 
