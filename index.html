@@ -53,8 +53,40 @@
                 
             }
         </script>
+        <style>
+        
+ h1.neon {
+    color: #0000FF;
+    text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+             0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+             0 0 40px #A5F1FF;
+    text-align: center;
+}
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    border-color:rgb(30,144,255);
+} 
+hr.style-two { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); }
+
+hr.style-three { height: 15px; border: 0; box-shadow: inset 0 12px 12px -12px rgb(30,144,255); }
+span#footertext {
+color: rgb(153, 153, 153);
+}
+
+</style>
     </head>
     <body>
+    <hr class="style-three"></hr>
+    <div>
+    	<h1 class="neon">Quick Feed System</h1>
+    </div>
+    <hr></hr>
         <ul id='messages'></ul>
     </body>
 </head>
@@ -71,10 +103,10 @@
         <a href="/Investor">Investor</a>
       </li>
       <li>
-        <a href="/media">media</a>
+        <a href="/media">Media</a>
       </li>
       <li>
-        <a href="/blog">blog</a>
+        <a href="/blog">Blog</a>
       </li>
  
 	 </ul>
@@ -85,11 +117,11 @@
 	<div class="jumbotron"  style="padding:40px;">
       <table  id="resulttable" class="container">
 		<tr>	
-				<th >Publish Date  </th>
+				<th>Published Date</th>
 				<th>Author</th>
 				<th>Feed Category</th>
 				<th>Description</th>
-				<th>link</th>
+				<th>Link</th>
 				<th>Publish Date  </th>
 		</tr>
 	  </table>
@@ -99,6 +131,8 @@
   
   
 </body>
-
-
+<footer>
+<hr style="style-two">
+<span id="footertext">&#169; Infosys Ltd. 2017. All rights reserved</span>
+</footer>
 </html>
