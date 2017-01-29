@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>Express HTML</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  
+  
+        <script src='/socket.io/socket.io.js'></script>
+        <script>
+            var socket = io();
+		    socket.on('refresh', function(data) {
+        		addMessage(data);
+
+                // Respond with a message including this clients' id sent from the server
+                socket.emit('i am client', {data: 'foo!', id: data.id});
+            });
+            socket.on('refresh', function(data) {
+				addMessage(data);
+            });
+            socket.on('error', console.error.bind(console));
+            socket.on('message', console.log.bind(console));
+
+            function addMessage(data) {
+               
+			   for(size=0; size < data.length  ; size ++){
+					var row = document.getElementById("resulttable").insertRow(size+1);
+					
+					var pubDate  = data[size].pubDate.$date;
+					var author  = data[size].author;
+					var title = data[size].title;
+					var feedcategory  =  data[size].feedCategory;
+					alert(feedcategory);
+					var description = data[size].description;
+					var link = data[size].link;
+
+					var cell0 = row.insertCell(0);
+					var cell1 = row.insertCell(1);	
+					var cell2 = row.insertCell(2);	
+					var cell3 = row.insertCell(3);	
+					var cell4 = row.insertCell(4);	
+					var cell5 = row.insertCell(5);	
+					
+					cell0.innerHTML = pubDate;
+					cell1.innerHTML = author;
+					cell2.innerHTML = title;
+					cell3.innerHTML = feedcategory;
+					cell4.innerHTML = description;
+					cell5.innerHTML = link;
+					
+				}
+                
+            }
+        </script>
+    </head>
+    <body>
+        <ul id='messages'></ul>
+    </body>
+</head>
+<body>
+  <div style="margin:100px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">All Feeds</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/Infosys">Infosys</a>
+      </li>
+      <li>
+        <a href="/Investor">Investor</a>
+      </li>
+      <li>
+        <a href="/media">media</a>
+      </li>
+      <li>
+        <a href="/blog">blog</a>
+      </li>
+ 
+	 </ul>
+  </div>
+</nav>
+    
+	
+	<div class="jumbotron"  style="padding:40px;">
+      <table  id="resulttable" class="container">
+		<tr>	
+				<th >Publish Date  </th>
+				<th>Author</th>
+				<th>Feed Category</th>
+				<th>Description</th>
+				<th>link</th>
+				<th>Publish Date  </th>
+		</tr>
+	  </table>
+    </div>
+  </div>
+  
+  
+  
+</body>
+
+
+</html>
